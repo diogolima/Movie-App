@@ -1,4 +1,6 @@
 # README
+* Only using to testing
+* Deployed at https://movie-app-review.herokuapp.com/
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
