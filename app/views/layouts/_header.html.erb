@@ -11,8 +11,17 @@
     </div>
     <div class="collapse navbar-collapse" id="collapse-menu">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Movies", movies_path %></li>
+        <li><%= link_to 'Movies', movies_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'New Movie', new_movie_path %></li>
+          <li><%= link_to 'Account', edit_user_registration_path %></li>
+          <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign in', new_user_session_path, class: 'active' %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path, class: 'active' %></li>
+        <% end %>
       </ul>
+      <%= render 'layouts/form' %>
     </div>
   </div>
 </nav>

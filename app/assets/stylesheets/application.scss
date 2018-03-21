@@ -14,18 +14,16 @@
  *= require_self
  */
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
- .icon { width: 40px;}
- body {padding-top: 50px;}
- .navbar-light { background-color: #e3f2fd; }
- .container { background-color: #f6f6f6; min-height: 650px; padding-left: 0; padding-right: 0px; height: 1000px;}
- .container-yield {padding-left: 15px; padding-right: 15px;}
-
-.navbar-light .navbar-toggle .icon-bar {
-    background-color: #888;
-}
-.navbar-light .navbar-toggle {
-    border-color: #ddd;
-}
+.icon { width: 40px;}
+body {padding-top: 50px;}
+.navbar-light { background-color: #e3f2fd; }
+.container { min-height: 650px; padding-left: 0; padding-right: 0px; height: 1000px;}
+.container-yield {padding-top: 20px;}
+.container-yield {padding-left: 15px; padding-right: 15px;}
+.movie-margin { margin-top: 10px;}
+.navbar-light .navbar-toggle .icon-bar { background-color: #888; }
+.navbar-light .navbar-toggle { border-color: #ddd; }
+.navbar-form { margin-right: inherit; }
