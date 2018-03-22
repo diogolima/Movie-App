@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :owner, only: [:edit, :update, :destroy]
 
   # GET /movies
   # GET /movies.json
@@ -70,5 +71,14 @@ class MoviesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
       params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
+    end
+
+    def owner
+      if @movie.user != current_user
+        respond_to do |format|
+          format.html { redirect_to movies_url, notice: "You can't edit this. You are not the owner." }
+          format.json { head :no_content }
+        end
+      end
     end
 end

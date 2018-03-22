@@ -16,14 +16,16 @@
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-.icon { width: 40px;}
 body {padding-top: 50px;}
-.navbar-light { background-color: #e3f2fd; }
+
 .container { min-height: 650px; padding-left: 0; padding-right: 0px; height: 1000px;}
-.container-yield {padding-top: 20px;}
-.container-yield {padding-left: 15px; padding-right: 15px;}
+.container-yield {padding: 20px 15px 0px 15px;}
 .movie-margin { margin-top: 10px;}
+
+/* All settings for navbar */
+.icon { width: 40px;}
+.navbar-light { background-color: #409fe0; text-decoration: white;}
+.nav.navbar-nav > li > a {color: white;}
 .navbar-light .navbar-toggle .icon-bar { background-color: #888; }
 .navbar-light .navbar-toggle { border-color: #ddd; }
 .navbar-form { margin-right: inherit; }
