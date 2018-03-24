@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
 
   def show
     @average = @movie.reviews.count > 0 ? @movie.reviews.average(:rating).round(2) : 0 ;
+    @reviews = @movie.reviews.order('reviews.created_at DESC')
   end
 
   def new

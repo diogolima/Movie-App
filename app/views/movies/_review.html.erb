@@ -1,0 +1,27 @@
+<h2 class="review-movie-title"> <%= @movie.title %> </h2>
+<p><em> <%= @movie.description %> </em></p>
+<% if @movie.reviews.blank? %>
+  <h3>This movie don't have a review yet.</h3>
+  <%= link_to "Be the first", new_movie_review_path(@movie), class: "btn btn-primary btn-lg" %>
+<% else %>
+  <div class="table-responsive">
+    <% @reviews.each do |r| %>
+      <hr>
+      <div class="review-movie">
+        <div>
+          <strong>Author:</strong>
+          <%= r.user.email %>
+        </div>
+        <div class="star-rating" data-score="<%= r.rating %>"></div>
+        <div>
+          <strong>Comment:</strong>
+          <em><%= r.comment %></em>
+        </div>
+        <div>
+          <strong> Created at: </strong>
+          <%= r.created_at.strftime("%d/%m/%Y") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

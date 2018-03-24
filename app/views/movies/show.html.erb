@@ -34,34 +34,7 @@
         </div>
       </div>
       <div class="col-md-6 col-md-offset-1">
-        <h2 class="review-movie-title"> <%= @movie.title %> </h2>
-        <p> <%= @movie.description %> </p>
-        <% if @movie.reviews.blank? %>
-          <h3>This movie don't have a review yet.</h3>
-          <%= link_to "Be the first", new_movie_review_path(@movie), class: "btn btn-primary btn-lg" %>
-        <% else %>
-          <div class="table-responsive">
-            <% @movie.reviews.each do |r| %>
-              <hr>
-              <div class="review-movie">
-                <div>
-                  <strong>Author:</strong>
-                  <%= r.user.email %>
-                </div>
-                <div class="star-rating" data-score="<%= r.rating %>"></div>
-                <div>
-                  <strong>Comment:</strong>
-                  <%= r.comment %>
-                </div>
-                <div>
-                  <strong> Created at: </strong>
-                  <%= r.created_at.strftime("%d/%m/%Y") %>
-
-                </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+        <%= render 'reviews/show' %>
       </div>
     </div>
   </div>
@@ -77,7 +50,6 @@ $('.star-rating').raty({
   number: 10,
   path: '/assets/',
   readOnly: true,
-  half: true,
   score: function() {
     return $(this).attr('data-score');
   }
