@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @average = @movie.reviews.count > 0 ? @movie.reviews.average(:rating).round(2) : 0 ;
+    @average = @movie.reviews.count > 0 ? @movie.reviews.average(:rating).round(2) : 0
     @reviews = @movie.reviews.order('reviews.created_at DESC')
   end
 
@@ -50,6 +50,10 @@ class MoviesController < ApplicationController
       format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @movies = params[:search].presence ? Movie.search(params[:search]) : Movie.all
   end
 
   private

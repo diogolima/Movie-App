@@ -1,0 +1,12 @@
+<div class="row">
+  <% @movies.each do |movie| %>
+  <div class="col-sm-6 col-md-3">
+    <div class="movie-margin">
+      <figure>
+        <%= link_to (image_tag movie.image.url(:thumb), class: 'image'), movie %>
+        <p><figcaption><%= movie.title %></figcaption></p>
+      </figure>
+    </div>
+  </div>
+  <% end %>
+</div>
