@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @average = @movie.reviews.count > 0 ? @movie.reviews.average(:rating).round(2) : 0 ;
   end
 
   def new

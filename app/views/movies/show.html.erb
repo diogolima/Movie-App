@@ -3,6 +3,8 @@
     <div class="row">
       <div class="col-md-5">
         <%= image_tag @movie.image.url, class: 'movie-settings' %>
+        <div class='star-rating' data-score="<%= @average %>" %></div>
+        <em>Reviews #: <%= @movie.reviews.count %></em>
         <div class="table-responsive">
           <table class="table">
             <tbody>
@@ -39,28 +41,27 @@
           <%= link_to "Be the first", new_movie_review_path(@movie), class: "btn btn-primary btn-lg" %>
         <% else %>
           <div class="table-responsive">
-            <table class="table">
-              <tbody>
-                <% @movie.reviews.each do |r| %>
-                <div class="star-rating" data-score="<%= r.rating %>">
+            <% @movie.reviews.each do |r| %>
+              <hr>
+              <div class="review-movie">
+                <div>
+                  <strong>Author:</strong>
+                  <%= r.user.email %>
                 </div>
-                <tr>
-                  <td><strong>Author:</strong> </td>
-                  <td><%= r.user.email %></td>
-                </tr>
-                <tr>
-                  <td><strong>Rating:</strong></td>
-                  <td><%= r.rating %></td>
-                </tr>
-                <tr>
-                  <td><strong>Comment:</strong> </td>
-                  <td><%= r.comment %></td>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
-          <% end %>
-        </div>
+                <div class="star-rating" data-score="<%= r.rating %>"></div>
+                <div>
+                  <strong>Comment:</strong>
+                  <%= r.comment %>
+                </div>
+                <div>
+                  <strong> Created at: </strong>
+                  <%= r.created_at.strftime("%d/%m/%Y") %>
+
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

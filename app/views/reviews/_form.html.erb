@@ -10,16 +10,31 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  <div class="">
+    <div class="table-responsive">
+      <p><%= image_tag @movie.image.url(:thumb), class: 'movie-settings' %>
+      <strong>Title:</strong>
+      <%= @movie.title %>
+    </div>
+  </div>
+  <div id="star-rating">
     <%= f.label :rating %>
-    <%= f.text_field :rating %>
   </div>
   <div class="field">
     <%= f.label :comment %>
-    <%= f.text_area :comment%>
+    <%= f.text_area :comment, class: "form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary btn-lg" %>
   </div>
 <% end %>
+
+
+
+<script>
+$('#star-rating').raty({
+  number: 10,
+  path: '/assets/',
+  scoreName: 'review[rating]'
+});
+</script>
