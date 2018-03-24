@@ -1,10 +1,7 @@
-
 <div class="jumbotron">
 <h1>Review a Movie with us</h1>
 <p>To review a movie you need to have an account. If you don't have yet please sign up</p>
-<% if !user_signed_in? %>
-  <p><%= link_to "Sign Up to Review a Movie", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
-<% end %>
+<p><%= link_to "Sign Up to Review a Movie", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
 </div>
 <div class="row">
   <% @movies.each do |movie| %>
@@ -12,7 +9,7 @@
     <div class="movie-margin">
       <figure>
         <%= link_to (image_tag movie.image.url(:thumb), class: 'image'), movie %>
-        <p><figcaption><%= movie.title %></figcaption></p>
+        <figcaption><%= movie.title %></figcaption>
       </figure>
     </div>
   </div>

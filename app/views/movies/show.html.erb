@@ -28,38 +28,6 @@
               </tr>
             </tbody>
           </table>
-          <%= link_to "Write a Review", new_movie_review_path(@movie) %>
-        </div>
-      </div>
-      <div class="col-md-6 col-md-offset-1">
-        <h2 class="review-movie-title"> <%= @movie.title %> </h2>
-        <p> <%= @movie.description %> </p>
-        <% if @movie.reviews.blank? %>
-          <h3>This movie don't have a review yet.</h3>
-          <%= link_to "Be the first", new_movie_review_path(@movie), class: "btn btn-primary btn-lg" %>
-        <% else %>
-          <div class="table-responsive">
-            <table class="table">
-              <tbody>
-                <% @movie.reviews.each do |r| %>
-                <div class="star-rating" data-score="<%= r.rating %>">
-                </div>
-                <tr>
-                  <td><strong>Author:</strong> </td>
-                  <td><%= r.user.email %></td>
-                </tr>
-                <tr>
-                  <td><strong>Rating:</strong></td>
-                  <td><%= r.rating %></td>
-                </tr>
-                <tr>
-                  <td><strong>Comment:</strong> </td>
-                  <td><%= r.comment %></td>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
-          <% end %>
         </div>
       </div>
     </div>
@@ -69,16 +37,3 @@
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <% end %>
 <%= link_to 'Back', movies_path %>
-
-
-<script>
-$('.star-rating').raty({
-  number: 10,
-  path: '/assets/',
-  readOnly: true,
-  half: true,
-  score: function() {
-    return $(this).attr('data-score');
-  }
-});
-</script>
