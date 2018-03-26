@@ -55,3 +55,5 @@ gem 'jquery-rails'
 
 #search engine: searchkick
 gem 'searchkick', '~> 3.0', '>= 3.0.1'
+
+gem 'bonsai-elasticsearch-rails', '~> 0.2.0'
