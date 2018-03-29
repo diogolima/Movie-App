@@ -51,3 +51,4 @@ gem 'paperclip', '~> 6.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'ransack'

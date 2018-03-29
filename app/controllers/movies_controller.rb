@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   before_action :owner, only: [:edit, :update, :destroy]
 
   def index
-    @movies = Movie.all
+    @movies = @search.result
   end
 
   def show
