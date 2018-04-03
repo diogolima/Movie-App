@@ -13,3 +13,10 @@ two:
   movie_length: MyString
   director: MyString
   rating: MyString
+
+three:
+  title: MyString
+  description: MyText
+  movie_length: MyString
+  director: MyString
+  rating: MyString
