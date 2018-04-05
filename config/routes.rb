@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :movies do
     resources :reviews, except: [:show, :index]
   end
+  get 'user_movies', to: 'movies#user_movies'
 
   root 'movies#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
