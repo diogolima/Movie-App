@@ -21,4 +21,16 @@ class ReviewControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to @movie_test
   end
 
+  test "should not create review - no rating" do
+    assert_difference('Review.count', 0) do
+      post movie_reviews_path(@movie_test.id), params: {review: { comment: @review_test.comment }}
+    end
+  end
+
+  test "should not create review - no comment" do
+    assert_difference('Review.count', 0) do
+      post movie_reviews_path(@movie_test.id), params: {review: { rating: @review_test.rating }}
+    end
+  end
+
 end
