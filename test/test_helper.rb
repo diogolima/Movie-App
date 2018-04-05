@@ -13,14 +13,22 @@ class ActiveSupport::TestCase
       "user[encrypted_password]" => user.password
   end
 
-  def sign_in_for(subject)
+  def sign_in_user
     @user = User.create(email: "myemail@me.com", encrypted_password: 'password', id: 1, created_at: Time.now, updated_at: Time.now)
     sign_in @user
-    subject.update_attribute(:user, @user)
+  end
+
+  def sign_in_for(subject)
+    sign_in_user
+    att_user_model(subject, @user)
+  end
+
+  def att_user_model(subject, user)
+    subject.update_attribute(:user, user)
   end
 
   def att_diff_user(subject)
     @user2 = User.create(email: "myemail@me.com", encrypted_password: 'password', id: 2, created_at: Time.now, updated_at: Time.now)
-    subject.update_attribute(:user, @user2)
+    att_user_model(subject, @user2)
   end
 end
