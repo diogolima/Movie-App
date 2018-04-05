@@ -4,12 +4,26 @@ class MoviesController < ApplicationController
   before_action :owner, only: [:edit, :update, :destroy]
 
   def index
-    @movies = @search.result
+    if current_user != nil && check_user_id
+      @movies = @search.result.where(:user_id => current_user.id)
+    else
+      @movies = @search.result
+    end
   end
 
   def show
     @average = @movie.reviews.count > 0 ? @movie.reviews.average(:rating).round(2) : 0 ;
     @reviews = @movie.reviews.order('reviews.created_at DESC')
+  end
+
+  def user_movies
+    respond_to do |format|
+      if current_user.movies != nil && current_user.movies.count > 0
+        format.html { redirect_to movies_url user_id: current_user.id }
+      else
+        format.html { redirect_to movies_url, notice: 'Current user doesn\'t have movies' }
+      end
+    end
   end
 
   def new
@@ -70,5 +84,10 @@ class MoviesController < ApplicationController
           format.json { head :no_content }
         end
       end
+    end
+
+    def check_user_id
+      user_id = params[:user_id].to_i
+      user_id.to_s == params[:user_id] && user_id == current_user.id
     end
 end
