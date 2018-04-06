@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-  before_action :set_movie
-  before_action :authenticate_user!
+  before_action :set_movie, :authenticate_user!
+  before_action :review_owner, only: [:destroy]
 
   def new
     @review = Review.new
@@ -36,13 +36,14 @@ class ReviewsController < ApplicationController
   #   end
   # end
 
-  # def destroy
+  def destroy
+    # byebug
   #   @review.destroy
   #   respond_to do |format|
   #     format.html { redirect_to review_url, notice: 'Review was successfully destroyed.' }
   #     format.json { head :no_content }
   #   end
-  # end
+  end
 
   private
 
@@ -56,6 +57,10 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :comment)
+  end
+
+  def review_owner
+    owner(User.find(@review.user_id), movie_url(@movie.id), "You can't delete this. You are not the owner.")
   end
 
 end

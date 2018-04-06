@@ -21,6 +21,9 @@
           <strong> Created at: </strong>
           <%= r.created_at.strftime("%d/%m/%Y") %>
         </div>
+        <% if user_signed_in? && current_user.id == r.user_id %>
+          <%= link_to "Delete", movie_review_path(@movie.id, r), method: :delete, data: { confirm:  "Are you sure?" }%>
+        <% end %>
       </div>
     <% end %>
   </div>
