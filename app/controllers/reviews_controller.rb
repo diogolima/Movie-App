@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
       end
     end
   end
-  #
+
   # def update
   #   respond_to do |format|
   #     if @review.update(review_params)
@@ -37,12 +37,11 @@ class ReviewsController < ApplicationController
   # end
 
   def destroy
-    # byebug
-  #   @review.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to review_url, notice: 'Review was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
+    @review.destroy
+    respond_to do |format|
+      format.html { redirect_to movie_url(@movie.id), notice: 'Review was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
