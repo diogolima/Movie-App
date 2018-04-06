@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :owner, only: [:edit, :update, :destroy]
+  before_action :movie_owner, only: [:edit, :update, :destroy]
 
   def index
     if current_user != nil && check_user_id
@@ -77,13 +77,8 @@ class MoviesController < ApplicationController
       params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
     end
 
-    def owner
-      if @movie.user != current_user
-        respond_to do |format|
-          format.html { redirect_to movies_url, notice: "You can't edit this. You are not the owner." }
-          format.json { head :no_content }
-        end
-      end
+    def movie_owner
+      owner(@movie.user, movies_url, "You can't edit this. You are not the owner.")
     end
 
     def check_user_id
