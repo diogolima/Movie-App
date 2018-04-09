@@ -47,8 +47,15 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise', '~> 4.4', '>= 4.4.3'
-gem 'paperclip', '~> 6.0'
+gem 'envyable'
+
+
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails' # Use jquery as the JavaScript library
+
+# Search eng.
 gem 'ransack'
+
+# Using to upload pic to aws bucket
+gem 'aws-sdk', '~> 2'
+gem 'paperclip', '~> 5.0'

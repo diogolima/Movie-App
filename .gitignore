@@ -21,3 +21,6 @@
 /public/system/movies/images
 
 .DS_Store
+
+# Don't check in credentials
+config/env.yml
