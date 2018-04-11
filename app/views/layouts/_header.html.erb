@@ -15,6 +15,7 @@
         <% if user_signed_in? %>
           <li><%= link_to 'My Movies', user_movies_path %></li>
           <li><%= link_to 'New Movie', new_movie_path %></li>
+          <li><%= link_to 'TMDB', tmdb_movies_path %></li>
           <li><%= link_to 'Account', edit_user_registration_path %></li>
           <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
         <% else %>

@@ -1,0 +1,8 @@
+<p>If you want to search in another database: </p>
+<%= form_tag 'tmdb_movies' do %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div class="field">
+    <%= text_field_tag :title, "" , class: "tmdb form-control", :placeholder => "Movie Title"   %>
+    <%= submit_tag "Search", class: "btn btn-default"  %>
+  </div>
+<% end %>

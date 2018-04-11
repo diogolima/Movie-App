@@ -59,3 +59,7 @@ gem 'ransack'
 # Using to upload pic to aws bucket
 gem 'aws-sdk', '~> 2'
 gem 'paperclip', '~> 5.0'
+
+
+#Using Movie database gem
+gem 'themoviedb-api'

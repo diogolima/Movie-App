@@ -26,6 +26,26 @@ class MoviesController < ApplicationController
     end
   end
 
+  def tmdb
+    title = params[:title].nil? || params[:title].empty? ? "Harry Potter" : params[:title]
+    tmdb_list = Tmdb::Search.movie(title)
+    @tmdb_movies = []
+    tmdb_list.results.each do |tmdb|
+      # director = Tmdb::Movie.director(tmdb.id) - Delay to long -- Any alternative?
+      @tmdb_movies.push({
+        original_title: tmdb.original_title,
+        title: tmdb.title,
+        original_language: tmdb.original_language,
+        vote_count: tmdb.vote_count,
+        vote_average: tmdb.vote_average,
+        release_date: tmdb.release_date,
+        description: tmdb.overview,
+        image: "http://image.tmdb.org/t/p/w150_and_h225_bestv2#{tmdb.poster_path}",
+        # director: director.count > 0? director.first.name : ""
+      })
+    end
+  end
+
   def new
     @movie = current_user.movies.build
   end

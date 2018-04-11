@@ -4,6 +4,8 @@
 <p>To review a movie you need to have an account. If you don't have yet please sign up</p>
 <% if !user_signed_in? %>
   <p><%= link_to "Sign Up to Review a Movie", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+<% else %>
+  <%= render 'movies/tmdbform' %>
 <% end %>
 </div>
 <div class="row">
