@@ -31,7 +31,7 @@ class MoviesController < ApplicationController
     tmdb_list = Tmdb::Search.movie(title)
     @tmdb_movies = []
     tmdb_list.results.each do |tmdb|
-      # director = Tmdb::Movie.director(tmdb.id) - Delay to long -- Any alternative?
+      # director = Tmdb::Movie.director(tmdb.id) - Delay of 7sec -- Any alternative?
       @tmdb_movies.push({
         original_title: tmdb.original_title,
         title: tmdb.title,
