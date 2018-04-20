@@ -13,153 +13,153 @@ All responses are in json format
 Everything about zombies we can learn over here
 
 ### Index
-Return all zombies in your inventory, so you can control your "stock"
-/zombies
+Return all zombies in your inventory, so you can control your "stock"  
+https://zombies-scientist.herokuapp.com/zombies  
 
--- Response:
- --- Total of zombies
- --- Zombies
+-- Response:  
+ --- Total of zombies  
+ --- Zombies  
 
 ### Search
-You can search your zombie over here, using the zombie id, weapons name or armor name
+You can search your zombie over here, using the zombie id, weapons name or armor name  
 
--- Zombie id is an integer
--- weapons name are string separated by ','
--- armors name are string separated by ','
+-- Zombie id is an integer  
+-- weapons name are string separated by ','  
+-- armors name are string separated by ','  
 
--- Response:
- --- Zombie id in params
- --- weapons in params
- --- armors in params
- --- zombies found
+-- Response:  
+ --- Zombie id in params  
+ --- weapons in params  
+ --- armors in params  
+ --- zombies found  
 
 
--- Example format:
-/zombies/search/?id={zombie_id}weapons={weapon_name,weapon2_name}&armors={armor_name, armor2_name}
+-- Example format:  
+https://zombies-scientist.herokuapp.com/zombies/search/?id={zombie_id}weapons={weapon_name,weapon2_name}&armors={armor_name, armor2_name}
 
 
 ### Create
-You can create your zombie but to do that you need send all parameters of the zombie.
-Are required: name, hit_points, brains_eaten, speed, turn_date
+You can create your zombie but to do that you need send all parameters of the zombie.  
+Are required: name, hit_points, brains_eaten, speed, turn_date  
 
--- Separate words with '+'. If name Mr Presley => name=Mr+Presley
--- turn_date = DD-MM-YYYY
--- <WEAPONS/ARMORS> => Separate each one by ','
--- To create a zombie with no weapons/armors you have to send weapons/armors with blank values
---  If weapons/armors are not present in url will add all weapons/armors to the zombie (Rambo zombie)
-
-
--- Response:
- --- zombie created
- --- weapons of the zombie
- --- armors of the zombie
- --- message
+-- Separate words with '+'. If name Mr Presley => name=Mr+Presley  
+-- turn_date = DD-MM-YYYY  
+-- <WEAPONS/ARMORS> => Separate each one by ','  
+-- To create a zombie with no weapons/armors you have to send weapons/armors with blank values  
+--  If weapons/armors are not present in url will add all weapons/armors to the zombie (Rambo zombie)  
 
 
--- Example format: /zombies/create?name=Diogo+Lima&hit_points=20&brains_eaten=20&speed=5&turn_date=17-01-2017&weapons=weapon&armors=armor,armor2
+-- Response:  
+ --- zombie created  
+ --- weapons of the zombie  
+ --- armors of the zombie  
+ --- message  
+
+
+-- Example format:   /zombies/create?name=Diogo+Lima&hit_points=20&brains_eaten=20&speed=5&turn_date=17-01-2017&weapons=weapon&armohttps://zombies-scientist.herokuapp.comrs=armor,armor2
 
 
 ### Update
-You can update your zombie, send all parameters you want to update.
+You can update your zombie, send all parameters you want to update.  
 
--- Zombie ID is required: ID >= 1
--- All the others zombie params are optional, send them if you want to update
--- Weapons are optional: if you want update weapons send all weapons names separated by ','
--- Armors are option: if you want update armors send all armors names separated by ','
+-- Zombie ID is required: ID >= 1  
+-- All the others zombie params are optional, send them if you want to update  
+-- Weapons are optional: if you want update weapons send all weapons names separated by ','  
+-- Armors are option: if you want update armors send all armors names separated by ','  
 
--- Response:
- --- Zombie updated
- --- weapons of the zombie
- --- armors of the zombie
- --- message
+-- Response:  
+ --- Zombie updated  
+ --- weapons of the zombie  
+ --- armors of the zombie  
+ --- message  
 
 
--- Example format: /zombies/update?id=<int>&name=<string>&hit_points=<int>&brains_eaten=<int>&speed=<int>&turn_date=<dd-mm-yyyy>&weapons=<string,string>&armors=<string, string>
+-- Example format:   https://zombies-scientist.herokuapp.com/zombies/update?id=<int>&name=<string>&hit_points=<int>&brains_eaten=<int>&speed=<int>&turn_date=<dd-mm-yyyy>&weapons=<string,string>&armors=<string, string>
 
 
 ### Delete
-To delete a zombie you need to know his id
+To delete a zombie you need to know his id  
 
--- Zombie ID is required to delete
+-- Zombie ID is required to delete  
 
 
--- Response:
- --- Message with killed zombie id 
+-- Response:  
+ --- Message with killed zombie id   
 
--- Example format:
- /zombies/delete?id=<int>
+-- Example format:  
+ https://zombies-scientist.herokuapp.com/zombies/delete?id=<int>
 
 
 ## Armors
 ### Index
-Return all armors in your inventory, so you can control your "stock"
-/armors
+Return all armors in your inventory, so you can control your "stock"  
+https://zombies-scientist.herokuapp.com/armors  
 
 
 ### Create
-You can keep creating armors for your zombies to be protected from monsters
-/armors/create/
+You can keep creating armors for your zombies to be protected from monsters  
+https://zombies-scientist.herokuapp.com/armors/create/  
 
--- Required params:
-  --- name - string
-  --- defense_points - integer
-  --- durability - integer
-  --- price
+-- Required params:  
+  --- name - string  
+  --- defense_points - integer  
+  --- durability - integer  
+  --- price  
 
--- Response:
- --- Armor created
- --- message
+-- Response:  
+ --- Armor created  
+ --- message  
 
--- Example format:
-/armors/create/?name=body+helmet&defense_points=10&durability=10&price=10
+-- Example format:  
+https://zombies-scientist.herokuapp.com/armors/create/?name=body+helmet&defense_points=10&durability=10&price=10
 
 ### Delete
-If you have your armor stollen or destroyed you can delete from you inventory
-/armors/delete/
+If you have your armor stollen or destroyed you can delete from you inventory  
+https://zombies-scientist.herokuapp.com/armors/delete/  
 
--- Required params:
-  --- id - integer
+-- Required params:  
+  --- id - integer  
 
--- Response:
- --- armor destroyed
- --- message
+-- Response:  
+ --- armor destroyed  
+ --- message  
 
--- Example format:
-/armors/delete/?id=22
+-- Example format:  
+https://zombies-scientist.herokuapp.com/armors/delete/?id=22  
 
 
 ## Weapons
 ### Index
-Return all weapons in your inventory, so you can control your "stock"
-/weapons
+Return all weapons in your inventory, so you can control your "stock"  
+https://zombies-scientist.herokuapp.com/weapons  
 
 ### Create
-You can keep creating weapons for your zombies to be attack some monsters
-/weapons/create/
+You can keep creating weapons for your zombies to be attack some monsters  
+https://zombies-scientist.herokuapp.com/weapons/create/  
 
--- Required params:
-  --- name - string
-  --- attack_points - integer
-  --- durability - integer
-  --- price
+-- Required params:  
+  --- name - string  
+  --- attack_points - integer  
+  --- durability - integer  
+  --- price  
 
--- Response:
- --- weapon created
- --- message
+-- Response:  
+ --- weapon created  
+ --- message  
 
--- Example format:
-/weapons/create/?name=rock&attack_points=2&durability=30&price=1
+-- Example format:  
+https://zombies-scientist.herokuapp.com/weapons/create/?name=rock&attack_points=2&durability=30&price=1
 
 ### Delete
-If you have your armor stollen or destroyed you can delete from you inventory
-/armors/delete/
+If you have your armor stollen or destroyed you can delete from you inventory  
+https://zombies-scientist.herokuapp.com/armors/delete/  
 
--- Required params:
-  --- id - integer
+-- Required params:  
+  --- id - integer  
 
--- Response:
- --- weapon destroyed
- --- message
+-- Response:  
+ --- weapon destroyed  
+ --- message  
 
--- Example format:
-/armors/delete/?id=22
+-- Example format:  
+https://zombies-scientist.herokuapp.com/armors/delete/?id=22
