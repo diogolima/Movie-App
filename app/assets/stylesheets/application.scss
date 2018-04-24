@@ -16,6 +16,12 @@
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.btn-dark{
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
 body {padding-top: 50px;}
 
 .container { min-height: 650px; padding-left: 0; padding-right: 0px; height: 1000px;}
