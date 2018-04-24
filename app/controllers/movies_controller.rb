@@ -2,6 +2,7 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
   before_action :movie_owner, only: [:edit, :update, :destroy]
+  include TmdbHelper
 
   def index
     if current_user != nil && check_user_id
@@ -27,22 +28,27 @@ class MoviesController < ApplicationController
   end
 
   def tmdb
-    title = params[:title].nil? || params[:title].empty? ? "Harry Potter" : params[:title]
-    tmdb_list = Tmdb::Search.movie(title)
+    tmdb_list = tmdb_search(param_title)
     @tmdb_movies = []
-    tmdb_list.results.each do |tmdb|
-      # director = Tmdb::Movie.director(tmdb.id) - Delay of 7sec -- Any alternative?
-      @tmdb_movies.push({
-        original_title: tmdb.original_title,
-        title: tmdb.title,
-        original_language: tmdb.original_language,
-        vote_count: tmdb.vote_count,
-        vote_average: tmdb.vote_average,
-        release_date: tmdb.release_date,
-        description: tmdb.overview,
-        image: "http://image.tmdb.org/t/p/w150_and_h225_bestv2#{tmdb.poster_path}",
-        # director: director.count > 0? director.first.name : ""
-      })
+    tmdb_list.results.each do |tmdb_movie|
+      @tmdb_movies.push(tmdb_movie_build(tmdb_movie))
+    end
+  end
+
+  def save_to_profile
+    movie = tmdb_request_movie(params[:id])
+    director = tmdb_director(params[:id])
+    tmdb_movie = tmdb_movie_build(movie)
+    length = tmdb_runtime(movie)
+    @movie = Movie.new
+    @movie.build_movie(tmdb_movie, director, current_user.id, length)
+    respond_to do |format|
+    if @movie.save
+        format.html { redirect_to movies_url user_id: current_user.id, notice: 'Movie saved to your profile!'  }
+      else
+        format.html { redirect_to tmdb_movies_path, notice: 'It wasn\'t possible save the movie to your profile!'}
+        format.json { render json: @movie.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -104,5 +110,9 @@ class MoviesController < ApplicationController
     def check_user_id
       user_id = params[:user_id].to_i
       user_id.to_s == params[:user_id] && user_id == current_user.id
+    end
+
+    def param_title
+      params[:title].nil? || params[:title].gsub(" ","").empty? ? "Harry Potter" : params[:title]
     end
 end
