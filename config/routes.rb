@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   get 'user_movies', to: 'movies#user_movies'
   match 'tmdb_movies', to: 'movies#tmdb', via: [:get, :post]
+  get 'save_to_profile', to: 'movies#save_to_profile'
 
   root 'movies#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

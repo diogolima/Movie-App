@@ -20,6 +20,7 @@
             <td><%= movie[:release_date] %></td>
             <td><strong>Rating</strong></td>
             <td><%= movie[:vote_average] %></td>
+            <td><%= link_to 'Save Movie', save_to_profile_path(:id => movie[:id]), class: "btn btn-dark btn-sm" %></td>
           </tr>
         <% end %>
       </tbody>
