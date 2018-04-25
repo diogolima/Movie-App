@@ -10,7 +10,7 @@ module TmdbHelper
       vote_average: tmdb_movie.vote_average,
       release_date: tmdb_movie.release_date,
       description: tmdb_movie.overview,
-      image: "http://image.tmdb.org/t/p/w150_and_h225_bestv2#{tmdb_movie.poster_path}",
+      image: "https://image.tmdb.org/t/p/w150_and_h225_bestv2#{tmdb_movie.poster_path}",
     }
   end
 
