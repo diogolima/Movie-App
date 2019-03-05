@@ -50,7 +50,7 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'envyable'
 
 
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails' # Use jquery as the JavaScript library
 
 # Search eng.
